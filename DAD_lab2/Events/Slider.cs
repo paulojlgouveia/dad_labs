@@ -13,7 +13,10 @@ namespace Events {
 		public int Position {
 			//this is what is run when we change the position
 			get { return position; }
-			set { position = value; }
+			set {
+				position = value;
+				//Event here here
+			}
 		}
 
 	}

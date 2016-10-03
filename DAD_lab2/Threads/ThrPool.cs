@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Threads {
@@ -12,13 +13,15 @@ namespace Threads {
 		CircularBuffer<ThrWork> buffer = null;
 
 		public ThrPool(int thrNum, int bufSize) {
-			// TODO
 			buffer = new CircularBuffer<ThrWork>(bufSize);
+			Thread workerThread = new Thread(thrNum);
 		}
 
 		public void AssyncInvoke(ThrWork action) {
-			// TODO
+			buffer.Add(action);
 		}
 
 	}
+
 }
+

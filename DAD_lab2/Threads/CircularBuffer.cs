@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Threads {
@@ -11,22 +12,44 @@ namespace Threads {
 		private int nextFree;
 		private int nextRead;
 
+		private int ocupied;
+
 		public CircularBuffer(int length) {
 			buffer = new T[length];
 			nextFree = 0;
 			nextRead = 0;
+			ocupied = 0;
 		}
 
 		public void Add(T thing) {
-			buffer[nextFree] = thing;
-			nextFree = (nextFree + 1) % buffer.Length;
+			lock (this) {
+				while (ocupied == buffer.Length) {
+					Monitor.Wait(this);
+				}
+
+				buffer[nextFree] = thing;
+				nextFree = (nextFree + 1) % buffer.Length;
+				ocupied++;
+
+				Monitor.Pulse(this);
+			}
 		}
 
 		public T GetNext() {
-			int currentRead = nextRead;
-			nextRead = (nextRead + 1) % buffer.Length;
+			T returnVal;
 
-			return buffer[currentRead];
+			lock (this) {
+				while (ocupied == 0) {
+					Monitor.Wait(this);
+				}
+
+				returnVal = buffer[nextRead];
+				nextRead = (nextRead + 1) % buffer.Length;
+				ocupied--;
+
+				Monitor.Pulse(this);
+			}
+				return returnVal;
 		}
 	}
 
