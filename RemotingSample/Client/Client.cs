@@ -9,8 +9,6 @@ namespace RemotingSample {
 	class Client {
 
 		static void Main() {
-			System.Console.WriteLine("[client]\r\n");
-
 			TcpChannel channel = new TcpChannel();
 			ChannelServices.RegisterChannel(channel,true);
 

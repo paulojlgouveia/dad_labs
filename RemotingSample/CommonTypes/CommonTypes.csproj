@@ -88,9 +88,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelloInterface.cs" />
-    <Compile Include="MyClient.cs" />
-    <Compile Include="MyServer.cs" />
+    <Compile Include="CommonTypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
