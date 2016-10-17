@@ -22,20 +22,21 @@ namespace ClientFormApplication {
 		/// </summary>
 		[STAThread]
 		static void Main() {
-			Console.WriteLine("[client] : started.");
-
-			Console.WriteLine("username: ");
-			string username = Console.ReadLine();
-			Console.WriteLine("port: ");
-			int port = Int32.Parse(Console.ReadLine());
-
-			ClientInterface _client = new Client(username, port);
-
-			FreeConsole();
+			//Console.WriteLine("[client] : started.");
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1());
+
+
+			//Console.WriteLine("username: ");
+			//string username = Console.ReadLine();
+			//Console.WriteLine("port: ");
+			//int port = Int32.Parse(Console.ReadLine());
+
+			//ClientInterface _client = new Client(username, port);
+
+			//FreeConsole();
 
 			
 			Console.WriteLine("[client] : closed.\r\npress <return> to exit.");

@@ -26,8 +26,8 @@ namespace ServerConsoleApplication {
 			ServerInterface _server = new Server();
 
 
-			Console.WriteLine("[server] : closed.\r\npress <return> to exit.");
 			Console.ReadLine();
+			Console.WriteLine("[server] : closed.\r\npress <return> to exit.");
 		}
 	}
 }

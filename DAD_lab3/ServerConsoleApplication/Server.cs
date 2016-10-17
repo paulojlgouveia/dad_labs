@@ -36,6 +36,9 @@ namespace ServerConsoleApplication {
 			ClientInterface RemoteClient = null;
 
 			foreach (KeyValuePair<string,string> client in _clients) {
+
+				Console.WriteLine(client.Key+"\r\n"+ client.Value + "\r\n");
+
 				if (client.Key.Equals(name)) {
 					continue;
 
@@ -45,7 +48,9 @@ namespace ServerConsoleApplication {
 																	client.Value );
 
 					try {
-						RemoteClient.propagate(message);
+						//RemoteClient.propagate(message);
+
+						RemoteClient.ping();
 
 					} catch (SocketException) {
 						string str = "\r\nCould not locate client:"
@@ -57,8 +62,6 @@ namespace ServerConsoleApplication {
 
 			}
 
-
-			throw new NotImplementedException();
 		}
 
 		// Gives infinit life span to the registered object

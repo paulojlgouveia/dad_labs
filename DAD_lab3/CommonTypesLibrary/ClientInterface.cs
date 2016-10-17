@@ -12,6 +12,7 @@ namespace CommonTypesLibrary {
 
 		void propagate(string message);
 
+		void sendMessage(string message);
 	}
 }
 
